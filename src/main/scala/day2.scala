@@ -1,15 +1,14 @@
-import scala.io.Source
+package aoc
 
-object d02: 
-  // @main
-  def day2(): Unit =
-    val input = Source.fromFile("input/2").getLines.toArray
-    println(s"Part 1: ${day2part1(input)}")
-    println(s"Part 2: ${day2part2(input)}")
+object d02:
+  def run(): Unit =
+    val input = util.readLines("input/2")
+    println(s"Part 1: ${part1(input)}")
+    println(s"Part 2: ${part2(input)}")
 
-  def day2part1(input: Array[String]): String =
-    var depth = 0;
-    var forward = 0;
+  def part1(input: Array[String]): String =
+    var depth = 0
+    var forward = 0
     input
       .map(str => str.split(" "))
       .map(s => (s(0), s(1).toInt))
@@ -21,7 +20,7 @@ object d02:
       )
     (forward * depth).toString
 
-  def day2part2(input: Array[String]): String =
+  def part2(input: Array[String]): String =
     var depth = 0
     var forward = 0
     var aim = 0
