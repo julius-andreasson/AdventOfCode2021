@@ -1,7 +1,5 @@
 package aoc
 
-import scala.collection.mutable.Queue
-
 /* TODO
 > input into octopi: Array[Array[Int]]
 > hasFlashed Array[Array[Boolean]]
@@ -23,13 +21,14 @@ for iteration <- (1 to iterations) do
 */
 
 object d11:
+  import scala.collection.mutable.Queue
+  
   val input: Array[Array[Int]] = 
-    util.readLines("input/11").toArray.map(_.map(_.toString.toInt).toArray)
+    util.readLines("input/11").map(_.map(_.toString.toInt).toArray)
 
-  // @main
-  def day11(): Unit =
-    day11part1(input.clone)
-    // day11part2(input.clone)
+  def run(): Unit =
+    part1(input.clone)
+    // part2(input.clone)
   
   def getSurrounding(i: Int, j: Int): IndexedSeq[(Int, Int)] =
     for 
@@ -39,7 +38,7 @@ object d11:
     yield
       (i + dx, j + dy)
   
-  def day11part1(octopi: Array[Array[Int]]): Unit =
+  def part1(octopi: Array[Array[Int]]): Unit =
     var flashes = 0L
     for iteration <- (1 to 100) do
       val hasFlashed: Array[Array[Boolean]] = Array.fill[Boolean](octopi.length, octopi(0).length)(false)
@@ -63,5 +62,5 @@ object d11:
       
     println(flashes)
     
-  def day11part2(): Unit =
-    println("wow2")
+  def part2(): Unit =
+    println("Not implemented. ")

@@ -10,8 +10,7 @@ object d17:
     Part 2:
     
   */
-  // @main
-  def day17(): Unit =
+  def run(): Unit =
     //target area: x=150..171, y=-129..-70
     val minX = 150
     val maxX = 171

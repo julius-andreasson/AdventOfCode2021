@@ -1,26 +1,28 @@
-// @main
-def day7(): Unit =
-  val crabs: Array[Int] = 
-    scala.io.Source.fromFile("input/7").getLines.next.split(",").toArray.map(_.toInt)
-  day7f(crabs.clone, false)
-  day7f(crabs.clone, true)
+package aoc
 
-def sumproduct(input: Array[Int], x: Int): Int =
-  input.map(i => math.abs(i - x)).sum
+object d07:
+  def run(): Unit =
+    val crabs: Array[Int] = 
+      util.readLines("input/7").head.split(",").toArray.map(_.toInt)
+    func(crabs.clone, false)
+    func(crabs.clone, true)
 
-def weightedSumproduct(input: Array[Int], x: Int): Int =
-  input.map(i => 
-    (1 to math.abs(i - x)).sum
-  ).sum
+  def sumproduct(input: Array[Int], x: Int): Int =
+    input.map(i => math.abs(i - x)).sum
 
-def weight(x: Int): Int = (1 to x).sum
+  def weightedSumproduct(input: Array[Int], x: Int): Int =
+    input.map(i => 
+      (1 to math.abs(i - x)).sum
+    ).sum
 
-def day7f(input: Array[Int], weighted: Boolean): Unit =
-  var min = Int.MaxValue
-  var minX = -1
-  for x <- input.min.toInt until input.max.toInt do
-    val sum = if weighted then weightedSumproduct(input, x) else sumproduct(input, x)
-    if sum < min then
-      min = sum
-      minX = x
-  println(s"$minX, $min")
+  def weight(x: Int): Int = (1 to x).sum
+
+  def func(input: Array[Int], weighted: Boolean): Unit =
+    var min = Int.MaxValue
+    var minX = -1
+    for x <- input.min.toInt until input.max.toInt do
+      val sum = if weighted then weightedSumproduct(input, x) else sumproduct(input, x)
+      if sum < min then
+        min = sum
+        minX = x
+    println(s"$minX, $min")

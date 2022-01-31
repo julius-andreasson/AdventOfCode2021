@@ -1,8 +1,7 @@
 package aoc
 
-import scala.collection.mutable.{Map, Set, Queue}
-
 object d13:
+  import scala.collection.mutable.{Map, Set, Queue}
 
   val input: Array[(Int, Int)] = 
     util.readLines("input/13").filter(str => str(0) != 'f').map(_.split(",")).map(p => (p(0).toInt, p(1).toInt))
@@ -12,12 +11,11 @@ object d13:
       ( (str.take(1) == "x"), str.drop(1).toInt )
     )
 
-  // @main
-  def day13(): Unit =
-    day13part1()
-    day13part2()
+  def run(): Unit =
+    part1()
+    part2()
 
-  def day13part1(): Unit =
+  def part1(): Unit =
     val x_fold = 655 // x-coordinate at which to fold the paper. 
     val set: Set[(Int, Int)] = Set.empty[(Int,Int)]
     for i <- input do
@@ -27,7 +25,7 @@ object d13:
         set += (i)
     println(s"Number of points after first fold: ${set.size}")
 
-  def day13part2(): Unit =
+  def part2(): Unit =
     var set: Set[(Int, Int)] = input.to(Set)
     for fold <- folds do
       val newSet = Set.empty[(Int, Int)]

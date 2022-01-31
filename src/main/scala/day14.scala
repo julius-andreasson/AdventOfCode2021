@@ -1,9 +1,8 @@
 package aoc
 
-import scala.collection.mutable.{Map, Set, Queue}
-
 object d14:
-
+  import scala.collection.mutable.{Map, Set, Queue}
+  
   val start: String = util.readLines("input/14").apply(0).toString
   val polMap: Map[String, String] = Map.empty[String, String]
   util.readLines("input/14")
@@ -19,12 +18,11 @@ object d14:
   //     ( (str.take(1) == "x"), str.drop(1).toInt )
   //   )
 
-  @main
-  def day14(): Unit =
-    // day14part1()
-    day14part2()
+  def run(): Unit =
+    // part1()
+    part2()
 
-  def day14part1(): Unit =
+  def part1(): Unit =
     var str = start
     // for mapping <- polMap do
     //   println(mapping.toString)
@@ -39,7 +37,7 @@ object d14:
     val value = counts.max - counts.min
     println(value)
 
-  def day14part2(): Unit =
+  def part2(): Unit =
     var str = start
     val pairs: Array[String] = polMap.keys.toArray
     var counts: Array[Long] = Array.fill[Long](pairs.length)(0)

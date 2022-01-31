@@ -3,11 +3,11 @@ package aoc
 object d9:
   import scala.collection.mutable.{Map, Set}
 
-  val input: Array[Array[Int]] = util.readLines("input/9").toArray.map(_.map(_.toString.toInt).toArray)
-  // @main
-  def day9(): Unit =
-    day9part1()
-    day9part2()
+  val input: Array[Array[Int]] = util.readLines("input/9").map(_.map(_.toString.toInt).toArray)
+  
+  def run(): Unit =
+    part1()
+    part2()
 
   def checkLowest(i: Int, j: Int): Boolean =
     !Vector((i + 1, j), (i - 1, j), (i, j + 1), (i, j - 1))
@@ -21,7 +21,7 @@ object d9:
       .filter(p => input(p._1)(p._2) != 9)
       .foreach(p => set += p)
 
-  def day9part1(): Unit =
+  def part1(): Unit =
     val lowPoints: IndexedSeq[Int] = 
       (for i <- input.indices yield
         for j <- input(i).indices if checkLowest(i, j) yield
@@ -41,7 +41,7 @@ object d9:
     end while
     newSet.size
 
-  def day9part2(): Unit =
+  def part2(): Unit =
     val lowPoints: IndexedSeq[(Int, Int)] = 
       (for i <- input.indices yield
         for j <- input(i).indices if checkLowest(i, j) yield

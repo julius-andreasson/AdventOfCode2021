@@ -2,15 +2,14 @@ package aoc
 
 object d10:
   import scala.collection.mutable.Stack
-  val input = util.readLines("input/10").toArray
+  val input = util.readLines("input/10")
   var filterIndexes: Vector[Int] = Vector.empty[Int]
 
-  // @main
-  def day10(): Unit =
-    day10part1()
-    day10part2()
+  def run(): Unit =
+    part1()
+    part2()
 
-  def day10part1(): Unit =
+  def part1(): Unit =
     var illegalVector: Vector[Char] = Vector.empty[Char]
     for i <- input.indices do
       val stack: Stack[Char] = Stack.empty[Char]
@@ -34,7 +33,7 @@ object d10:
     val point = illegalVector.map(c => points(ends.indexOf(c)))
     println(point.sum)
     
-  def day10part2(): Unit =
+  def part2(): Unit =
     val part2input = 
       (for i <- input.indices if !filterIndexes.contains(i) yield
         input(i)

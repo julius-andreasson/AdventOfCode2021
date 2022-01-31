@@ -1,15 +1,13 @@
 package aoc
 
-import scala.collection.mutable.{Map, Queue, PriorityQueue}
-
 object d15:
+  import scala.collection.mutable.{Map, Queue, PriorityQueue}  
 
-  // @main  
-  def day15(): Unit =
+  def run(): Unit =
     val input_part1: Array[Array[Int]] = 
       util.readLines("input/15").map(_.map(_.toString.toInt).toArray)
-    day15f(input_part1)
-    day15f(processInput(input_part1))
+    func(input_part1)
+    func(processInput(input_part1))
   
   def getSurrounding(i: Int, j: Int, input: Array[Array[Int]]): Vector[(Int, Int)] =
     for
@@ -18,7 +16,7 @@ object d15:
     yield
       p
   
-  def day15f(input: Array[Array[Int]]): Unit =
+  def func(input: Array[Array[Int]]): Unit =
     val goal: (Int, Int) = (input.length - 1, input(0).length - 1)
     
     val frontier: PriorityQueue[(Int, Int, Int)] = PriorityQueue()(Ordering.by(p => -p._3))
